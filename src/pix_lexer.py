@@ -17,6 +17,7 @@ RELATIONAL_OPS = {"==", "!=", ">>", "<<", ">=", "<="}
 LOGICAL_OPS = {"&&", "||", "!!"}
 ASSIGNMENT_OPS = {"<-", "="}
 DELIMITERS = {"(", ")", "{", "}"}
+SPECIAL_OPS = {"::"}
 
 TOKEN_REGEX = [
     ("STRING", r"'[^']*'|\"[^\"]*\""),
@@ -52,7 +53,7 @@ class Lexer:
                 # Operadores compostos
                 two_char = line[i:i+2]
 
-                if two_char in ARITHMETIC_OPS | RELATIONAL_OPS | LOGICAL_OPS | ASSIGNMENT_OPS:
+                if two_char in ARITHMETIC_OPS | RELATIONAL_OPS | LOGICAL_OPS | ASSIGNMENT_OPS | SPECIAL_OPS:
                     self.tokens.append((two_char, "OPERATOR"))
                     i += 2
                     continue

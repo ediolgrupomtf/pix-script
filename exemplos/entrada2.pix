@@ -1,0 +1,33 @@
+LEDGER ControleFinanceiro
+
+LET @cliente <- "Ana Clara"
+LET #parcelas <- 3
+LET $valorParcela <- 750.50
+LET $valorTotal <- $valorParcela ** #parcelas
+LET ?aprovado <- FALSE
+LET !chaveDestino <- "financeiro@empresa.com"
+
+$> 'Calculando valor total...'
+
+LET $mediaParcelas <- ($valorTotal // #parcelas)
+
+IF ($valorTotal >= 2000.00) {
+    $> 'Valor alto detectado'
+    LET ?aprovado <- TRUE
+}
+:: {
+    $> 'Valor dentro do limite'
+}
+
+IF (?aprovado == TRUE && !chaveDestino != "") {
+    $> 'Pagamento autorizado'
+}
+:: {
+    $> 'Pagamento bloqueado'
+}
+
+LET $resto <- $valorTotal %% #parcelas
+
+$> 'Processamento finalizado'
+
+CLOSE

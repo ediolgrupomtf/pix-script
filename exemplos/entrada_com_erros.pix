@@ -1,0 +1,22 @@
+LEDGER TesteErros
+
+LET @nome <- 'Maria'
+LET #idade <- 22
+
+$> 'Testando erros...'
+
+LET $valor <- 10.5.3        # ERRO: número inválido (dois pontos)
+LET ?ok <- TRU              # ERRO: TRU não existe (deveria ser TRUE)
+LET !pix <- "abc@gmail.com  # ERRO: string não fechada
+
+IF ($valor >> 10.00) {
+    $> 'Ok'
+}
+:: {
+    $> 'Else ok'
+}
+
+LET @x <- 'teste' @y        # ERRO: dois tokens colados sem operador (depende do seu lexer)
+LET $z <- 100 @@            # ERRO: @@ inválido
+
+CLOSE
