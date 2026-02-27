@@ -1,0 +1,10 @@
+LEDGER meu_programa
+	LET #a <- 45
+	LET #b <- 69
+	LET #c
+	#c <- #b
+	#b <- #a
+	#a <- #c
+	$> 'Valor de A: ' ++ #a
+	$> 'Valor de B: ' ++ #b
+CLOSE

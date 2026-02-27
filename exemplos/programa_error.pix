@@ -1,0 +1,8 @@
+LEDGER programa_error
+	LET #a
+	LET #b
+	LET ?c <- #a < #b
+	$> #a
+	$> #b
+	$> #c
+CLOSE
